@@ -90,7 +90,7 @@ html {
     --accent: #426022;
     --accent-light: #59802f;
     --sidebar-w: 260px;
-    --header-h: 88px;
+    --header-h: 100px;
     --border: #daa44e;
     --max-w-main-content: 850px;
 }
@@ -99,7 +99,7 @@ body {
     background: var(--bg);
     color: var(--ink);
     font-family: "Lato", sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.8;
     display: flex;
     justify-content: center;
@@ -112,6 +112,12 @@ body {
     max-width: 1200px;
     min-height: 100vh;
     position: relative;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0;
 }
 
 /*----- SIDEBAR -----*/
@@ -224,10 +230,13 @@ nav a.active::before {
     position: sticky;
     top: 0;
     height: var(--header-h);
+    width: 100%;
+    max-width: var(--max-w-main-content);
     background: var(--bg);
     border-bottom: 1px solid var (--border);
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 0 48px;
     gap: 40px;
     z-index: 90;
@@ -250,7 +259,6 @@ nav a.active::before {
     align-items: center;
     gap: 5px;
     cursor: pointer;
-    opacity: 0.55;
     transition: opacity 0.2s;
     text-decoration: none;
 }
@@ -264,8 +272,8 @@ nav a.active::before {
 }
 
 .icon-img {
-    width: 22px;
-    height: 22px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
     opacity: 0.45;
     transition: opacity 0.2s;
@@ -285,10 +293,13 @@ nav a.active::before {
     text-transform: uppercase;
     color: var(--ink-muted);
     font-weight: 500;
-    white-space: nowrap;
+    white-space: normal;
+    text-align: center;
+    max-width: 64px;
+    line-height: 1.3;
 }
 
-.icon-item.active icon-caption {
+.icon-item.active .icon-caption {
     color: var(--accent);
 }
 
@@ -300,7 +311,6 @@ nav a.active::before {
 }
 
 .header-label {
-    margin-left: auto;
     font-size: 0.65rem;
     color: var(--ink-faint);
     letter-spacing: 0.08em;
@@ -342,16 +352,70 @@ h1 em {
 }
 
 h2 {
-    font-size: 1.55rem;
+    font-size: 1.75rem;
     font-weight: 600;
     margin-bottom: 16px;
     letter-spacing: -0.01em;
+    color: var(--accent);
 }
 
 p {
-    color: var(--ink-muted);
+    color: var(--ink);
     margin-bottom: 16px;
-    font-size: 0.95rem;
+    font-size: clamp(1rem, 1.1vw, 1.2rem);
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent);
+}
+
+.content-section p.blockquote {
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--ink);
+    border-left: 3px solid var(--accent);
+    padding: 4px 0 4px 20px;
+    margin: 24px 0;
+}
+
+/*----- BIBLIOGRAPHY -----*/
+
+.content-section .bibliography {
+    margin-top: 24px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.content-section .bibliography .bib-item {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--ink-muted);
+}
+
+.content-section .bibliography .bib-num {
+    font-size: 0.65rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    padding-top: 1px;
+}
+
+.content-section .bibliography .bib-item a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-light);
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.content-section .bibliography .bib-item a:hover {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
 }
 
 /*----- BIO -----*/
@@ -429,22 +493,69 @@ p {
     }
 }
 
+/*----- TESTIMONIAL -----*/
+
+.testimonial {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 12px;
+    padding: 36px 40px;
+    margin-bottom: 48px;
+    margin-top: 32px;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial::before {
+    content: '\201c';
+    position: absolute;
+    top: -10px;
+    left: 24px;
+    font-size: 8rem;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+}
+
+.testimonial p {
+    color: rgba(255,255,255,0.85);
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.testimonial a {
+    color: var(--accent-light);
+    text-decoration: none;
+}
+
+.testimonial-attr {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    font-weight: 500;
+}
+
 /*----- CARD GRID -----*/
 
 .card-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 16px;
     margin-top: 32px;
+    margin-bottom: 32px;
 }
 
 .card {
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-    aspect-ratio: 1 / 1;
-    cursor: default;
+    aspect-ratio: 16 / 7;
+    cursor: pointer;
     transition: box-shadow 0.25s, border-color 0.25s;
+    display: block;
+    text-decoration: none;
 }
 
 .card:hover {
@@ -475,9 +586,9 @@ p {
     inset: 0;
     background: linear-gradient(
 	to top,
-	rgba(218, 164, 78, 0.50) 0%,
-	rgba(218, 164, 78, 0.20) 35%,
-	rgba(218, 164, 78, 0.05) 80%
+	rgba(218, 164, 78, 0.77) 0%,
+	rgba(218, 164, 78, 0.25) 35%,
+	rgba(218, 164, 78, 0.05) 90%
     );
     pointer-events: none;
 }
@@ -493,9 +604,9 @@ p {
 }
 
 .card h3 {
-    font-size: 1.25rem;
-    font-weight: 400;
-    color: var(--accent);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
     line-height: 1.6;
     text-shadow: 0 1px 4px #fff;
     text-transform: uppercase;
@@ -548,6 +659,83 @@ p {
     transform: translateY(-1px);
 }
 
+/*----- PORTFOLIO -----*/
+
+.portfolio-row {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.portfolio-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 16px 20px;
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--bg);
+    background: var(--accent-light);
+}
+
+.portfolio-item:hover {
+    border-color: var(--accent-light);
+    background: var(--ink);
+}
+
+/* Left: name + description stacked */
+.portfolio-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 45%;
+}
+
+.portfolio-name {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.portfolio-desc {
+    font-size: 0.78rem;
+    color: var(--bg);
+}
+
+/* Right: badges wrap in a flex row */
+.portfolio-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-end;
+    max-width: 45%;
+}
+
+.portfolio-role {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--border);
+    background: var(--accent);
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.portfolio-tags {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
 /*----- FOOTER -----*/
 
 footer {
@@ -562,12 +750,32 @@ footer {
     flex-wrap: wrap;
 }
 
+.footer-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 40%;
+}
+
 .footer-name {
     font-size: 1rem;
     font-weight: 400;
     color: var(--accent);
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    margin-bottom: 16px;
+}
+
+.footer-fine-print {
+    font-size: 0.68rem;
+    color: var(--ink-faint);
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.footer-fine-print a {
+    color: var(--accent);
+    text-decoration: none;
 }
 
 .footer-links {
@@ -576,7 +784,7 @@ footer {
 }
 
 .footer-links a {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     font-weight: 400;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -590,8 +798,10 @@ footer {
 }
 
 .footer-copy {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
+    max-width: 30%;
     text-transform: uppercase;
+    text-align: right;
 }
 
 .footer-copy a {
@@ -680,6 +890,14 @@ footer {
     footer {
 	padding: 32px 28px;
     }
+
+    .footer-identity {
+	max-width: 50%;
+    }
+
+    .footer-copy {
+	max-width: 50%;
+    }
 }
 
 /*----- SMALL TABLET / LARGE MOBILE (<768px) -----*/
@@ -766,10 +984,6 @@ footer {
 	padding: 32px 20px 56px;
     }
 
-    .card-grid {
-	grid-template-columns: 1fr;
-    }
-
     .cta-block {
 	flex-direction: column;
 	align-items: flex-start;
@@ -793,20 +1007,21 @@ footer {
 	gap: 16px;
     }
 
+    .footer-identity {
+	max-width: 100%;
+    }
+    
     .footer-links {
 	flex-wrap: wrap;
 	gap: 16px;
     }
 
-    .portfolio-item {
-	flex-wrap: wrap;
+    .footer-copy {
+	max-width: 100%;
     }
 
-    .portfolio-desc {
-	font-size: 0.75rem;
-	margin-left: 0;
-	width: 100%;
-	margin-top: 4px;
+    .portfolio-badges {
+	justify-content: flex-start;
     }
 }
 

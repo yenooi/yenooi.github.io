@@ -34,12 +34,12 @@
     <aside class="sidebar">
 
       <nav>
-	<a href="index.html" class="active"><img class="nav-icon" src="assets/images/yenooi-logo_green.png" alt="Yen Ooi icon" />YEN OOI</a>
-	<a href="fiction.html"><img class="nav-icon" src="assets/images/icon_fiction.png" alt="Fiction icon" />Fiction</a>
-	<a href="non-fiction.html"><img class="nav-icon" src="assets/images/icon_non-fiction.png" alt="Non-fiction icon" />Non-fiction</a>
-	<a href="games.html"><img class="nav-icon" src="assets/images/icon_games.png" alt="Games icon" />Games</a>
-	<a href="chapunk.html"><img class="nav-icon" src="assets/images/chapunk.png" alt="Chapunk" />Chapunk</a>
-	<a href="zoefuturism.html"><img class="nav-icon" src="assets/images/zoefuturism.png" alt="Zoefuturism" />Zoefuturism</a>
+	<a href="#" class="active"><img class="nav-icon" src="assets/images/yenooi-logo_green.png" alt="Yen Ooi icon" />YEN OOI</a>
+	<a href="#"><img class="nav-icon" src="assets/images/icon_fiction.png" alt="Fiction icon" />Fiction</a>
+	<a href="#"><img class="nav-icon" src="assets/images/icon_non-fiction.png" alt="Non-fiction icon" />Non-fiction</a>
+	<a href="#"><img class="nav-icon" src="assets/images/icon_games.png" alt="Games icon" />Games</a>
+	<a href="#"><img class="nav-icon" src="assets/images/chapunk.png" alt="Chapunk" />Chapunk</a>
+	<a href="#"><img class="nav-icon" src="assets/images/zoefuturism.png" alt="Zoefuturism" />Zoefuturism</a>
       </nav>
       
     </aside>
@@ -81,25 +81,11 @@
           Submit your idea!
           </a>
 	</div>
-	
       </main>
 	    
       <!-- Footer -->
       <footer>
-	
-	<div class="footer-identity">
-	  <div class="footer-name">Yen Ooi 2006</div>
-	  <p class="footer-fine-print">For commercial fiction and non-fiction enquiries, please contact <a href="mailto:abi.fellows@dhhliteraryagency.com">Abi Fellows (DHH Lit Agency)</a>.</p>
-	  <p class="footer-fine-print">For contracts, commissions, or collaborations, please <a href="mailto:yen@yenooi.com">email me</a>.</p>
-	</div>
-
-	<div class="footer-links">
-	  <a href="https://uk.linkedin.com/in/yenooi"><i class="fa-brands fa-linkedin"></i></a>
-	  <a href="https://www.instagram.com/yenooi/"><i class="fa-brands fa-instagram"></i></a>
-	  <a href="https://bsky.app/profile/yenooi.bsky.social"><i class="fa-brands fa-bluesky"></i></a>
-	  <a href="mailto:yen@yenooi.com"><i class="fa-solid fa-envelope"></i></a>
-	</div>
-	
+	<div class="footer-name">Yen Ooi 2006</div>
 	<div class="footer-copy">Website created by <a href="https://www.danbeekim.org/">Dr. Taun</a></div>
       </footer>
 	
