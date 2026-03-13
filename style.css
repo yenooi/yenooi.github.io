@@ -90,7 +90,7 @@ html {
     --accent: #426022;
     --accent-light: #59802f;
     --sidebar-w: 260px;
-    --header-h: 100px;
+    --header-h: 180px;
     --border: #daa44e;
     --max-w-main-content: 850px;
 }
@@ -233,11 +233,10 @@ nav a.active::before {
     width: 100%;
     max-width: var(--max-w-main-content);
     background: var(--bg);
-    border-bottom: 1px solid var (--border);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 48px;
+    padding: 20px 48px;
     gap: 40px;
     z-index: 90;
 }
