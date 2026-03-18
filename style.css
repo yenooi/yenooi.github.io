@@ -93,6 +93,7 @@ html {
     --sidebar-w: 260px;
     --header-h: 180px;
     --border: #daa520;
+    --hover: #fdfde8;
     --max-w-main-content: 850px;
 }
 
@@ -193,27 +194,26 @@ nav a.active .nav-icon {
     opacity: 1;
 }
 
-nav a:hover  {
-    color: var(--ink);
-    background: var(--accent-light);
+nav a:hover {
+    color: var(--accent-light);
+    background: none;
+}
+
+nav a:hover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 220, 50, 0.45);
+    clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%);
+    pointer-events: none;
 }
 
 nav a.active {
     color: var(--accent);
-    background: var(--border);
+    background: rgba(218, 165, 32, 0.28);
     font-weight: 500;
-}
-
-nav a.active::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 3px;
-    height: 60%;
-    background: var(--accent);
-    border-radius: 0 2px 2px 0;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.10);
 }
 
 /*----- RIGHT COLUMN -----*/
