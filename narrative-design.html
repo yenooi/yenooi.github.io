@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <title>Yen Ooi: Narrative Design</title>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Hugo Awards finalist writer-researcher whose works explore East and Southeast Asian culture, identity and values">
+    <link rel="icon" type="" href="">
+    <!-- style css -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  </head>
+  <body>
+
+    <!-- OVERLAY FOR MOBILE SIDEBAR -->
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <!-- MOBILE TOP BAR -->
+    <div class="mobile-topbar">
+      <img class="mobile-logo-img" src="assets/images/yenooi-logo_gold.png" alt="Yen Ooi" />
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+	<span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="page-wrap">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <nav>
+	<a href="index.html"><img class="nav-icon" src="assets/images/yenooi-logo_gold.png" alt="Yen Ooi icon" />YEN OOI</a>
+	<a href="all-works.html">ALL WORKS</a>
+	<a href="narrative-design.html" class="active">NARRATIVE DESIGN</a>
+	<a href="chapunk.html">CHAPUNK</a>
+	<a href="zoefuturism.html">ZOEFUTURISM</a>
+      </nav>
+      
+    </aside>
+	 
+    <!-- RIGHT COLUMN -->
+    <div class="right-col">
+
+      <!-- Scrollable Main Content -->
+      <main>
+	
+	<h1>Narrative Design</h1>
+	
+	<div class="content-section">
+	  <p>BLURB ABOUT NARRATIVE DESIGN WORK</p>
+	</div>
+	
+      </main>
+	    
+      <!-- Footer -->
+      <footer>
+	
+	<div class="footer-identity">
+	  <div class="footer-name">Yen Ooi 2006</div>
+	  <p class="footer-fine-print">For commercial fiction and non-fiction enquiries, please contact <a href="mailto:abi.fellows@dhhliteraryagency.com">Abi Fellows (DHH Lit Agency)</a>.</p>
+	  <p class="footer-fine-print">For contracts, commissions, or collaborations, please <a href="mailto:yen@yenooi.com">email me</a>.</p>
+	</div>
+
+	<div class="footer-links">
+	  <a href="https://uk.linkedin.com/in/yenooi"><i class="fa-brands fa-linkedin"></i></a>
+	  <a href="https://www.instagram.com/yenooi/"><i class="fa-brands fa-instagram"></i></a>
+	  <a href="https://bsky.app/profile/yenooi.bsky.social"><i class="fa-brands fa-bluesky"></i></a>
+	  <a href="mailto:yen@yenooi.com"><i class="fa-solid fa-envelope"></i></a>
+	  <a href="https://yenooi.substack.com/"><svg width="1.2em" height="1.2em" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z" fill="currentColor"></path></svg></a>
+	</div>
+	
+	<div class="footer-copy">Website created by <a href="https://www.danbeekim.org/">Dr. Taun</a></div>
+      </footer>
+	
+    </div><!-- /right-col -->
+
+    </div><!-- /page-wrap -->
+
+    <script>
+      
+      // --- MOBILE NAV MENU ---
+      const hamburger = document.getElementById('hamburger');
+      const sidebar = document.querySelector('.sidebar');
+      const overlay = document.getElementById('overlay');
+
+      function openMenu() {
+	  sidebar.classList.add('open');
+	  overlay.classList.add('visible');
+	  hamburger.classList.add('open');
+	  document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+	  sidebar.classList.remove('open');
+	  overlay.classList.remove('visible');
+	  hamburger.classList.remove('open');
+	  document.body.style.overflow = '';
+      }
+
+      hamburger.addEventListener('click', () => {
+	  sidebar.classList.contains('open') ? closeMenu() : openMenu();
+      });
+
+      overlay.addEventListener('click', closeMenu);
+
+      document.querySelectorAll('.sidebar nav a').forEach(a => {
+	  a.addEventListener('click', () => {
+	      if (window.innerWidth <= 768) closeMenu();
+	  });
+      });
+
+      // --- FILTERING ---
+      const filterLinks = document.querySelectorAll('.icon-header .icon-item');
+
+      filterLinks.forEach(link => {
+	  link.addEventListener('click', (e) => {
+	      e.preventDefault();
+
+	      // Toggle off if already active (returns to show-all)
+	      const isAlreadyActive = link.classList.contains('active');
+	      filterLinks.forEach(l => l.classList.remove('active'));
+
+	      if (isAlreadyActive) {
+		  // Deselected — show everything
+		  document.querySelectorAll('.portfolio-item').forEach(item => {
+		      item.style.display = '';
+		  });
+		  return;
+	      }
+
+	      link.classList.add('active');
+	      const selected = link.dataset.category;
+
+	      document.querySelectorAll('.portfolio-item').forEach(item => {
+		  const categories = item.dataset.category.split(' ');
+		  item.style.display = categories.includes(selected) ? '' : 'none';
+	      });
+	  });
+      });
+
+      // --- CATEGORY ICONS ---
+      const iconMap = {
+	  'fiction':     'assets/images/icon_fiction.png',
+	  'non-fiction': 'assets/images/icon_non-fiction.png',
+	  'games':       'assets/images/icon_games.png',
+	  'highlights':  'assets/images/icon_highlights.png',
+      };
+
+      document.querySelectorAll('.portfolio-item').forEach(item => {
+	  const categories = (item.dataset.category || '').split(' ').filter(Boolean);
+	  const wrap = document.createElement('div');
+	  wrap.className = 'portfolio-icons';
+	  categories.forEach(cat => {
+	      if (iconMap[cat]) {
+		  const img = document.createElement('img');
+		  img.src = iconMap[cat];
+		  img.alt = cat;
+		  wrap.appendChild(img);
+	      }
+	  });
+	  item.appendChild(wrap);
+      });
+      
+    </script>
+    
+  </body>
+</html>

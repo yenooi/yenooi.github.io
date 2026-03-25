@@ -176,9 +176,10 @@ nav a.active {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 48px;
-    gap: 40px;
+    padding: 48px 48px;
+    gap: 25px 40px;
     z-index: 90;
+    flex-wrap: wrap;
 }
 
 .icon-header::after {
@@ -190,6 +191,18 @@ nav a.active {
     height: 12px;
     background: linear-gradient(to bottom, var(--bg), transparent);
     pointer-events: none;
+}
+
+.icon-header-subtitle {
+    width: 100%;
+    text-align: center;
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0;
+    padding-bottom: 6px;
+    line-height: 1;
 }
 
 .icon-item {
@@ -211,8 +224,8 @@ nav a.active {
 }
 
 .icon-img {
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
     opacity: 0.45;
     transition: opacity 0.2s;
@@ -227,14 +240,14 @@ nav a.active {
 }
 
 .icon-caption {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     letter-spacing: 0.09em;
     text-transform: uppercase;
     color: var(--ink-muted);
     font-weight: 500;
     white-space: normal;
     text-align: center;
-    max-width: 64px;
+    max-width: 114px;
     line-height: 1.3;
 }
 
@@ -308,9 +321,14 @@ p {
 
 .content-section bt { font-weight: 700; }
 
-a {
+.content-section a {
     text-decoration: none;
+    color: var(--accent-light);
+}
+
+.content-section a:hover {
     color: var(--accent);
+    font-weight: 500;
 }
 
 .content-section p.blockquote {
@@ -320,7 +338,7 @@ a {
     color: var(--ink);
     border-left: 3px solid var(--accent);
     padding: 4px 0 4px 20px;
-    margin: 24px 0;
+    margin: 14px 0;
 }
 
 /*----- BIBLIOGRAPHY -----*/
@@ -414,9 +432,13 @@ a {
     font-size: clamp(0.9rem, 0.9vw, 1.1rem);
 }
 
-.bio-text em { font-style: italic; }
+.bio-text em { font-style: italic; font-weight: 450; }
 
 .bio-text bt { font-weight: 700; }
+
+.bio-text a { color: var(--accent-light); text-decoration: none; }
+
+.bio-text a:hover { color: var(--accent); font-weight: 500; text-decoration: none; }
 
 .bio-text p:last-child {
     margin-bottom: 0;
@@ -438,126 +460,6 @@ a {
     .bio-text {
 	text-align: left;
     }
-}
-
-/*----- TESTIMONIAL -----*/
-
-.testimonial {
-    background: var(--ink);
-    color: var(--white);
-    border-radius: 12px;
-    padding: 36px 40px;
-    margin-bottom: 48px;
-    margin-top: 32px;
-    position: relative;
-    overflow: hidden;
-}
-
-.testimonial::before {
-    content: '\201c';
-    position: absolute;
-    top: -10px;
-    left: 24px;
-    font-size: 8rem;
-    color: rgba(255,255,255,0.06);
-    line-height: 1;
-}
-
-.testimonial p {
-    color: rgba(255,255,255,0.85);
-    font-size: clamp(0.9rem, 0.9vw, 1.1rem);
-    line-height: 1.75;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.testimonial a {
-    color: var(--accent-light);
-    text-decoration: none;
-}
-
-.testimonial-attr {
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent-light);
-    font-weight: 500;
-}
-
-/*----- CARD GRID -----*/
-
-.card-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-top: 32px;
-    margin-bottom: 32px;
-}
-
-.card {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    aspect-ratio: 16 / 7;
-    cursor: pointer;
-    transition: box-shadow 0.25s, border-color 0.25s;
-    display: block;
-    text-decoration: none;
-}
-
-.card:hover {
-    box-shadow: 0 12px 36px rgba(26, 24, 20, 0.18);
-    transform: translateY(-2px);
-}
-
-/* Full-bleed background image */
-.card-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    transition: transform 0.4s ease;
-}
-
-.card:hover .card-bg {
-    transform: scale(1.04);
-}
-
-/* Gradient overlay so text is always legible */
-.card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-	to top,
-	rgba(218, 165, 32, 0.6) 0%,
-	rgba(218, 165, 32, 0.2) 25%,
-	rgba(218, 165, 32, 0.05) 70%
-    );
-    pointer-events: none;
-}
-
-/* Text overlay pinned to bottom */
-.card-body {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px 20px 18px;
-    z-index: 1;
-}
-
-.card h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.6;
-    text-shadow: 0 1px 4px var(--white);
-    text-transform: uppercase;
-    text-align: right;
 }
 
 /*----- CTA (Call To Action) -----*/
@@ -609,10 +511,19 @@ a {
 /*----- PORTFOLIO -----*/
 
 .portfolio-row {
-    margin-top: 32px;
+    margin-top: 6px;
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+.portfolio-row > .portfolio-item > .portfolio-text a {
+    color: var(--accent-light);
+}
+
+.portfolio-row > .portfolio-item > .portfolio-text a:hover {
+    font-weight: 400;
+    color: var(--accent);
 }
 
 .portfolio-item {
@@ -621,26 +532,51 @@ a {
     justify-content: space-between;
     gap: 24px;
     padding: 16px 20px;
-    border: 2px solid var(--ink);
-    border-radius: 8px;
+    border: none;
     transition: border-color 0.2s, background 0.2s;
     cursor: pointer;
     text-decoration: none;
-    color: var(--bg);
-    background: var(--accent-light);
+    color: var(--ink);
+    background: var(--bg);
 }
 
 .portfolio-item:hover {
-    border-color: var(--accent-light);
-    background: var(--ink);
+    background: var(--hover);
 }
 
-/* Left: name + description stacked */
-.portfolio-info {
+/* Links row inside a portfolio item */
+.portfolio-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin-top: 8px;
+}
+
+.portfolio-links a {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    padding-bottom: 1px;
+}
+
+.portfolio-links a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    font-weight: 500;
+}
+
+/* Left: name + info + description stacked */
+.portfolio-text {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    min-width: 45%;
+    flex: 1;
+    min-width: 0;
 }
 
 .portfolio-name {
@@ -648,39 +584,33 @@ a {
     font-size: 0.95rem;
 }
 
+.portfolio-item:hover .portfolio-name {
+    font-weight: 500;
+}
+
+.portfolio-info {
+    font-size: 0.7rem;
+    color: var(--ink);
+}
+
 .portfolio-desc {
-    font-size: 0.78rem;
-    color: var(--bg);
+    font-size: 0.8rem;
+    color: var(--ink);
 }
 
-/* Right: badges wrap in a flex row */
-.portfolio-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    justify-content: flex-end;
-    max-width: 45%;
+.portfolio-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+  align-items: center;
 }
 
-.portfolio-role {
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--border);
-    background: var(--accent);
-    padding: 3px 8px;
-    border-radius: 4px;
-    white-space: nowrap;
-}
-
-.portfolio-tags {
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    color: var(--bg);
-    background: var(--accent);
-    padding: 3px 8px;
-    border-radius: 4px;
-    white-space: nowrap;
+.portfolio-icons img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  opacity: 0.85;
 }
 
 /*----- FOOTER -----*/
